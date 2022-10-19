@@ -2,4 +2,9 @@
     <string name="app_name">Geosurf</string>
     <string name="button_addGeosurf">Add Surf Spot</string>
     <string name="hint_geosurfTitle">Surf Spot Title</string>
+    <string name="hint_geosurfDescription">Description </string>
+    <string name="menu_addGeosurf">Add</string>
+    <string name="enter_geosurf_title"> Please enter a Surf Spot Title </string>
+    <string name="save_geosurf"> Save Surf Spot </string>
+    <string name="menu_cancelGeosurf">Cancel</string>
 </resources>

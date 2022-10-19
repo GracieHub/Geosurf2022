@@ -1,3 +1,9 @@
 package org.wit.geosurf.models
 
-data class GeosurfModel(var title: String = "")
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class GeosurfModel(var id: Long = 0,
+                          var title: String = "",
+                          var description: String = "") : Parcelable
