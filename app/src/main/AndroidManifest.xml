@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Geosurf"
         tools:targetApi="31">
         <activity
-            android:name=".GeosurfActivity"
+            android:name=".activities.GeosurfActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

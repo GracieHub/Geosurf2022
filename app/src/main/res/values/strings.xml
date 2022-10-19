@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Geosurf</string>
+    <string name="button_addGeosurf">Add Surf Spot</string>
+    <string name="hint_geosurfTitle">Surf Spot Title</string>
 </resources>
