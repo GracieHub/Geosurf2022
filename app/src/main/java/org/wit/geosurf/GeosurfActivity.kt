@@ -3,6 +3,7 @@ package org.wit.geosurf
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import timber.log.Timber
+import timber.log.Timber.i
 
 class GeosurfActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,6 +12,6 @@ class GeosurfActivity : AppCompatActivity() {
 
         Timber.plant(Timber.DebugTree())
 
-        Timber.i("Geosurf Activity started..")
+        i("Geosurf Activity started..")
     }
 }
