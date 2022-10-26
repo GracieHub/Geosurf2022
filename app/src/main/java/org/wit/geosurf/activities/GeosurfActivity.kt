@@ -16,7 +16,6 @@ class GeosurfActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGeosurfBinding
     var geosurf = GeosurfModel()
-    //val geosurfs = ArrayList<GeosurfModel>()
     lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +56,10 @@ class GeosurfActivity : AppCompatActivity() {
             i("add Button Pressed: $geosurf")
             setResult(RESULT_OK)
             finish()
+        }
+
+        binding.chooseImage.setOnClickListener {
+            i("Select image")
         }
     }
 

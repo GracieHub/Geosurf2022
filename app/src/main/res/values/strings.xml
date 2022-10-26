@@ -4,7 +4,8 @@
     <string name="hint_geosurfTitle">Surf Spot Title</string>
     <string name="hint_geosurfDescription">Description </string>
     <string name="menu_addGeosurf">Add</string>
-    <string name="enter_geosurf_title"> Please enter a Surf Spot Title </string>
-    <string name="save_geosurf"> Save Surf Spot </string>
     <string name="menu_cancelGeosurf">Cancel</string>
+    <string name="enter_geosurf_title"> Please enter a SurfSpot Title </string>
+    <string name="save_geosurf"> Save Surf Spot </string>
+    <string name="button_addImage"> Add Image </string>
 </resources>
