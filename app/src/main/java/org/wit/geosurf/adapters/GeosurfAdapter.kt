@@ -3,6 +3,7 @@ package org.wit.geosurf.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import org.wit.geosurf.databinding.CardGeosurfBinding
 import org.wit.geosurf.models.GeosurfModel
 
@@ -34,6 +35,7 @@ class GeosurfAdapter constructor(private var geosurfs: List<GeosurfModel>,
         fun bind(geosurf: GeosurfModel, listener: GeosurfListener) {
             binding.geosurfTitle.text = geosurf.title
             binding.description.text = geosurf.description
+            Picasso.get().load(geosurf.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onGeosurfClick(geosurf) }
         }
     }

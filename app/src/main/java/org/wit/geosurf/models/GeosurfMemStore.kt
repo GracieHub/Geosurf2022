@@ -27,6 +27,7 @@ class GeosurfMemStore : GeosurfStore {
         if (foundGeosurf != null) {
             foundGeosurf.title = geosurf.title
             foundGeosurf.description = geosurf.description
+            foundGeosurf.image = geosurf.image
             logAll()
         }
     }

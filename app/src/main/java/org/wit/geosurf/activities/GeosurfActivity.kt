@@ -1,15 +1,20 @@
 package org.wit.geosurf.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import org.wit.geosurf.R
 import org.wit.geosurf.databinding.ActivityGeosurfBinding
+import org.wit.geosurf.helpers.showImagePicker
 import org.wit.geosurf.main.MainApp
 import org.wit.geosurf.models.GeosurfModel
-import timber.log.Timber
 import timber.log.Timber.i
 
 class GeosurfActivity : AppCompatActivity() {
@@ -17,6 +22,8 @@ class GeosurfActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGeosurfBinding
     var geosurf = GeosurfModel()
     lateinit var app: MainApp
+    private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
+    val IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +45,12 @@ class GeosurfActivity : AppCompatActivity() {
             binding.geosurfTitle.setText(geosurf.title)
             binding.description.setText(geosurf.description)
             binding.btnAdd.setText(R.string.save_geosurf)
+            Picasso.get()
+                .load(geosurf.image)
+                .into(binding.geosurfImage)
+            if (geosurf.image != Uri.EMPTY) {
+                binding.chooseImage.setText(R.string.change_geosurf_image)
+            }
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -59,8 +72,10 @@ class GeosurfActivity : AppCompatActivity() {
         }
 
         binding.chooseImage.setOnClickListener {
-            i("Select image")
+            showImagePicker(imageIntentLauncher)
         }
+
+        registerImagePickerCallback()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -75,5 +90,25 @@ class GeosurfActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun registerImagePickerCallback() {
+        imageIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { result ->
+                when(result.resultCode){
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            i("Got Result ${result.data!!.data}")
+                            geosurf.image = result.data!!.data!!
+                            Picasso.get()
+                                .load(geosurf.image)
+                                .into(binding.geosurfImage)
+                            binding.chooseImage.setText(R.string.change_geosurf_image)
+                        } // end of if
+                    }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
     }
 }
