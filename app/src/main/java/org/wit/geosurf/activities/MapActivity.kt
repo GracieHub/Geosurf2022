@@ -16,7 +16,8 @@ import org.wit.geosurf.R
 import org.wit.geosurf.models.Location
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback,
-    GoogleMap.OnMarkerDragListener {
+    GoogleMap.OnMarkerDragListener,
+    GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
     var location = Location()
@@ -41,6 +42,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
         map.addMarker(options)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
         map.setOnMarkerDragListener(this)
+        map.setOnMarkerClickListener(this)
+
     }
 
     override fun onMarkerDragStart(marker: Marker) {
@@ -62,4 +65,12 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback,
         finish()
         super.onBackPressed()
     }
+
+    override fun onMarkerClick(marker: Marker): Boolean {
+        val loc = LatLng(location.lat, location.lng)
+        marker.snippet = "GPS : $loc"
+        return false
+    }
+
+
 }
