@@ -32,7 +32,7 @@ class GeosurfListActivity : AppCompatActivity(), GeosurfListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = GeosurfAdapter(app.geosurfs.findAll(),this)
+        loadGeosurfs()
 
         registerRefreshCallback()
     }
@@ -61,6 +61,15 @@ class GeosurfListActivity : AppCompatActivity(), GeosurfListener {
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { binding.recyclerView.adapter?.notifyDataSetChanged() }
+            { loadGeosurfs() }
+    }
+
+    private fun loadGeosurfs() {
+        showGeosurfs(app.geosurfs.findAll())
+    }
+
+    fun showGeosurfs (geosurfs: List<GeosurfModel>) {
+        binding.recyclerView.adapter = GeosurfAdapter(geosurfs, this)
+        binding.recyclerView.adapter?.notifyDataSetChanged()
     }
 }
