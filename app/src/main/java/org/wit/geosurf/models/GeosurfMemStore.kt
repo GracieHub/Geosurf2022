@@ -28,6 +28,9 @@ class GeosurfMemStore : GeosurfStore {
             foundGeosurf.title = geosurf.title
             foundGeosurf.description = geosurf.description
             foundGeosurf.image = geosurf.image
+            foundGeosurf.lat = geosurf.lat
+            foundGeosurf.lng = geosurf.lng
+            foundGeosurf.zoom = geosurf.zoom
             logAll()
         }
     }
