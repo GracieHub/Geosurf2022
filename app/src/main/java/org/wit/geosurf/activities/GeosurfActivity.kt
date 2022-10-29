@@ -19,7 +19,6 @@ import org.wit.geosurf.helpers.showImagePicker
 import org.wit.geosurf.main.MainApp
 import org.wit.geosurf.models.Location
 import org.wit.geosurf.models.GeosurfModel
-// import org.wit.geosurf.showImagePicker
 import timber.log.Timber
 import timber.log.Timber.i
 
@@ -105,6 +104,10 @@ class GeosurfActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.item_delete -> {
+                app.geosurfs.delete(geosurf)
+                finish()
+            }
             R.id.item_cancel -> {
                 finish()
             }

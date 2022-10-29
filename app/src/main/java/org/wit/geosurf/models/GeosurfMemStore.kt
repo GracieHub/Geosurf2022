@@ -38,5 +38,9 @@ class GeosurfMemStore : GeosurfStore {
     private fun logAll() {
         geosurfs.forEach { i("$it") }
     }
+
+    override fun delete(geosurf: GeosurfModel) {
+        geosurfs.remove(geosurf)
+    }
 }
 
