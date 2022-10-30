@@ -18,7 +18,15 @@
     <string name="selected_abilityLevel">Ability Level:</string>
     <string name="update_date">Change Date</string>
     <string name="geosurf_rating_header">Rate SurfSpot</string>
-
+    <string name="warning_incorrect_credentials">Incorrect Login Credentials</string>
+    <string name="login_message">Sign in</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="button_sign_in">Sign in</string>
+    <string name="button_register">Sign Up</string>
+    <string name="register_message">Create a new account</string>
+    <string name="create_account">Create Account</string>
+    <string name="new_user">Create an account?</string>
     <string-array name="abilityLevels">
         <item>Select Ability Level advised for this Surfspot</item>
         <item>Beginner</item>

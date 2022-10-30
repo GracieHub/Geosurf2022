@@ -226,6 +226,7 @@ class GeosurfActivity : AppCompatActivity() {
             }
 
     }
+
     fun clickDataPicker(view: View) {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
