@@ -45,21 +45,21 @@ On application launch, users may log in to their account or alternatively create
 
 ![Signup](/app/src/images/register.PNG)
 
-### List travelmarks
+### List surfspots
 
-All travelmarks are displayed back to the user in a recycler view on the app home page. Each surfspot is clickable so the user can read and edit its details
+All surfpsots are displayed back to the user in a recycler view on the app home page. Each surfspot is clickable so the user can read and edit its details
 
->List all travelmarks
+>List all surfspots
 
 ![List Surfspots](/app/src/images/surfspot_list.png)
 
-### Add travelmarks
+### Add surfpsots
 
 Users can add surfspot page. Users can add the The location, title description, rating, location and image.
 
 >Add new surfspot
 
-![Add Surfspots](/app/src/images/surfpots_add.png)
+![Add Surfspots](/app/src/images/surfspots_add.png)
 
 ### Search and filter surfspots
 
@@ -71,7 +71,7 @@ Users can view Individual surfspots. If they click on the marker  the lat long i
 
 >View surfspot on map
 
-![Surfspots Map](/app/src/images/surfspots_map.PNG)
+![Surfspots Map](/app/src/images/surfspots_map.png)
 
 >Welcome Screen
 ![Welcome Screen](/app/src/images/welcome.png)
@@ -86,15 +86,9 @@ Users can view Individual surfspots. If they click on the marker  the lat long i
 ![Rating](/app/src/images/rating.png)
 ## References
 
-
-![Splash screen](https://www.youtube.com/watch?v=Q0gRqbtFLcw&ab_channel=Stevdza-San)
-
-![Adding a font](https://www.geeksforgeeks.org/how-to-change-font-of-toolbar-title-in-an-android-app/)
-
-![Adding Date Picker functionality](https://www.geeksforgeeks.org/togglebutton-in-kotlin/#:~:text=In%20Android%2C%20ToggleButton%20is%20just,is%20just%20like%20a%20button.
-)
-
-![Login](https://www.geeksforgeeks.org/datepicker-in-kotlin/#:~:text=Android%20DatePicker%20is%20a%20user,will%20select%20a%20valid%20date.
-)
+https://www.youtube.com/watch?v=Q0gRqbtFLcw&ab_channel=Stevdza-San
+https://www.geeksforgeeks.org/how-to-change-font-of-toolbar-title-in-an-android-app/
+https://www.geeksforgeeks.org/togglebutton-in-kotlin/#:~:text=In%20Android%2C%20ToggleButton%20is%20just,is%20just%20like%20a%20button.
+https://www.geeksforgeeks.org/datepicker-in-kotlin/#:~:text=Android%20DatePicker%20is%20a%20user,will%20select%20a%20valid%20date.
 https://stackoverflow.com/questions/39192945/serialize-java-8-localdate-as-yyyy-mm-dd-with-gson
 https://www.tutorialkart.com/kotlin-android/login-form-example-in-kotlin-android/
