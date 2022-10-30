@@ -26,8 +26,8 @@ class GeosurfListActivity : AppCompatActivity(), GeosurfListener {
         super.onCreate(savedInstanceState)
         binding = ActivityGeosurfListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.toolbar.title = title
-        setSupportActionBar(binding.toolbar)
+        binding.toolbarAdd.title = title
+        setSupportActionBar(binding.toolbarAdd)
 
         app = application as MainApp
 

@@ -7,7 +7,6 @@
     tools:context="org.wit.geosurf.activities.GeosurfActivity">
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,8 +25,20 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarAdd"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:titleTextColor="@color/colorPrimary" />
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                app:titleTextColor="@color/colorPrimary">
+
+                <TextView
+                    android:id="@+id/app_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/barrio"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
@@ -126,8 +137,8 @@
 
                 <Spinner
                     android:id="@+id/geosurfAbilityLevel"
-                    android:layout_width="358dp"
-                    android:layout_height="9dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:background="@color/colorAccent"
                     android:hint="@string/hint_geosurfAbilityLevel"

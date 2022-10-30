@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
             var username = binding.username.text.toString()
             var password = binding.password.text.toString()
             if(app.users.login(username, password)) {
-                val launcherIntent = Intent(this, GeosurfListActivity::class.java)
+                val launcherIntent = Intent(this, WelcomeActivity::class.java)
                 geosurfIntentLauncher.launch(launcherIntent)
             }else{
                 Snackbar
