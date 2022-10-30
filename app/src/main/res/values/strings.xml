@@ -15,9 +15,12 @@
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">Surf Map</string>
     <string name="menu_deleteGeosurf">Delete</string>
-    <string name="selected_item">Ability Level:</string>
+    <string name="selected_abilityLevel">Ability Level:</string>
     <string name="update_date">Change Date</string>
+    <string name="geosurf_rating_header">Rate SurfSpot</string>
+
     <string-array name="abilityLevels">
+        <item>Select Ability Level advised for this Surfspot</item>
         <item>Beginner</item>
         <item>Intermediate</item>
         <item>Advanced</item>

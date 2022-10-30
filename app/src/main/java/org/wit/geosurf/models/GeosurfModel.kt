@@ -16,7 +16,9 @@ data class GeosurfModel(var id: Long = 0,
                         var lng: Double = 0.0,
                         var zoom: Float = 0f,
                         var abilityLevel: String = "",
-                        var date: String = "") : Parcelable
+                        var date: String = "",
+                        var rating: Float = 0f) : Parcelable
+
 
 
 @Parcelize

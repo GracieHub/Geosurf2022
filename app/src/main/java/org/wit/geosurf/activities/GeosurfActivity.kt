@@ -27,6 +27,7 @@ import android.widget.*
 import java.util.*
 import android.widget.Spinner as Spinner
 
+
 class GeosurfActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGeosurfBinding
@@ -61,6 +62,8 @@ class GeosurfActivity : AppCompatActivity() {
             geosurf.description = binding.description.text.toString()
             geosurf.date = binding.geosurfDate.text.toString()
             geosurf.abilityLevel = binding.geosurfAbilityLevel.toString()
+            geosurf.rating = binding.geosurfRating.rating
+
 
             if (geosurf.title.isEmpty()) {
                 Snackbar.make(it,R.string.enter_geosurf_title, Snackbar.LENGTH_LONG)
@@ -84,6 +87,9 @@ class GeosurfActivity : AppCompatActivity() {
             binding.description.setText(geosurf.description)
             binding.geosurfDate.text = geosurf.date
             binding.datepicker.setText(R.string.update_date)
+            binding.geosurfRating.setRating(geosurf.rating)
+
+
 
             binding.btnAdd.setText(R.string.save_geosurf)
             Picasso.get()
@@ -118,7 +124,7 @@ class GeosurfActivity : AppCompatActivity() {
         if (geosurfAbilityLevel != null) {
             val adapter = ArrayAdapter(
                 this,
-                android.R.layout.simple_spinner_item, abilityLevels
+                android.R.layout.simple_spinner_dropdown_item, abilityLevels
             )
             geosurfAbilityLevel.adapter = adapter
 
@@ -130,7 +136,7 @@ class GeosurfActivity : AppCompatActivity() {
                 ) {
                     Toast.makeText(
                         applicationContext,
-                        getString(R.string.selected_item) + " " +
+                        getString(R.string.selected_abilityLevel) + " " +
                                 "" + abilityLevels[position], Toast.LENGTH_SHORT
                     ).show()
                 }
