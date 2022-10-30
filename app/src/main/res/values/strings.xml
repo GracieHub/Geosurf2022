@@ -27,6 +27,12 @@
     <string name="register_message">Create a new account</string>
     <string name="create_account">Create Account</string>
     <string name="new_user">Create an account?</string>
+    <string name="loggedIn">You are logged in!</string>
+    <string name="logout">Logout</string>
+    <string name="image">image</string>
+    <string name="button_geosurfList">Manage your SurfSpots</string>
+
+
     <string-array name="abilityLevels">
         <item>Select Ability Level advised for this Surfspot</item>
         <item>Beginner</item>

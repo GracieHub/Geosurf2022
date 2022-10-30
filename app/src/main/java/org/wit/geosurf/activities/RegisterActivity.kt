@@ -47,7 +47,7 @@ class RegisterActivity : AppCompatActivity() {
                 Snackbar
                     .make(it, "User Created", Snackbar.LENGTH_LONG)
                     .show()
-                val launcherIntent = Intent(this, GeosurfListActivity::class.java)
+                val launcherIntent = Intent(this, WelcomeActivity::class.java)
                 geosurfIntentLauncher.launch(launcherIntent)
             } else {
                 Snackbar
