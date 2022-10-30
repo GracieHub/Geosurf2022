@@ -66,6 +66,31 @@
                     android:padding="8dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/geosurfDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints=""
+                    android:background="@color/white"
+                    android:hint="@string/hint_geosurfDate"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textColor="@color/purple_500"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/datepicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Select Date"
+                    android:onClick="clickDataPicker"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"/>
+
                 <Button
                     android:id="@+id/chooseImage"
                     android:layout_width="match_parent"
@@ -96,6 +121,21 @@
                     android:text="@string/button_location"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"/>
+
+                <Spinner
+                    android:id="@+id/geosurfAbilityLevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_margin="8dp"
+                    android:spinnerMode="dropdown"
+                    android:background="@color/white"
+                    android:hint="@string/hint_geosurfAbilityLevel"
+                    android:inputType="text"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textColor="@color/purple_700"
+                    android:textSize="14sp" />
 
                 <Button
                     android:id="@+id/btnAdd"

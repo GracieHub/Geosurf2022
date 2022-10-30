@@ -31,6 +31,9 @@ class GeosurfMemStore : GeosurfStore {
             foundGeosurf.lat = geosurf.lat
             foundGeosurf.lng = geosurf.lng
             foundGeosurf.zoom = geosurf.zoom
+            foundGeosurf.date = geosurf.date
+            foundGeosurf.abilityLevel = geosurf.abilityLevel
+
             logAll()
         }
     }

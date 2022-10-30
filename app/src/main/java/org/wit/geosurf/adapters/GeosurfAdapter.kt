@@ -7,6 +7,8 @@ import com.squareup.picasso.Picasso
 import org.wit.geosurf.databinding.CardGeosurfBinding
 import org.wit.geosurf.models.GeosurfModel
 
+
+
 interface GeosurfListener {
     fun onGeosurfClick(geosurf: GeosurfModel)
 }
@@ -34,9 +36,12 @@ class GeosurfAdapter constructor(private var geosurfs: List<GeosurfModel>,
 
         fun bind(geosurf: GeosurfModel, listener: GeosurfListener) {
             binding.geosurfTitle.text = geosurf.title
+            // binding.geosurfAbilityLevel.text = geosurf.abilityLevel
             binding.description.text = geosurf.description
+            binding.geosurfDate.text = geosurf.date
             Picasso.get().load(geosurf.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onGeosurfClick(geosurf) }
+
         }
     }
 }

@@ -1,5 +1,6 @@
 package org.wit.geosurf.activities
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,10 @@ import org.wit.geosurf.models.Location
 import org.wit.geosurf.models.GeosurfModel
 import timber.log.Timber
 import timber.log.Timber.i
+import android.view.View
+import android.widget.*
+import java.util.*
+import android.widget.Spinner as Spinner
 
 class GeosurfActivity : AppCompatActivity() {
 
@@ -33,35 +38,30 @@ class GeosurfActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         var edit = false
-
         binding = ActivityGeosurfBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
-
         app = application as MainApp
-
         i("Geosurf Activity started...")
 
-        if (intent.hasExtra("geosurf_edit")) {
-            edit = true
-            geosurf = intent.extras?.getParcelable("geosurf_edit")!!
-            binding.geosurfTitle.setText(geosurf.title)
-            binding.description.setText(geosurf.description)
-            binding.btnAdd.setText(R.string.save_geosurf)
-            Picasso.get()
-                .load(geosurf.image)
-                .into(binding.geosurfImage)
-            if (geosurf.image != Uri.EMPTY) {
-                binding.chooseImage.setText(R.string.change_geosurf_image)
-            }
-        }
+        //array of ability levels declared
+        val abilityLevels = resources.getStringArray(R.array.abilityLevels)
 
+        // calendar declaration
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        // Add to surfspot button click listener
         binding.btnAdd.setOnClickListener() {
             geosurf.title = binding.geosurfTitle.text.toString()
             geosurf.description = binding.description.text.toString()
+            geosurf.date = binding.geosurfDate.text.toString()
+            geosurf.abilityLevel = binding.geosurfAbilityLevel.toString()
+
             if (geosurf.title.isEmpty()) {
                 Snackbar.make(it,R.string.enter_geosurf_title, Snackbar.LENGTH_LONG)
                     .show()
@@ -76,9 +76,70 @@ class GeosurfActivity : AppCompatActivity() {
             setResult(RESULT_OK)
             finish()
         }
+        // edit surfspot
+        if (intent.hasExtra("geosurf_edit")) {
+            edit = true
+            geosurf = intent.extras?.getParcelable("geosurf_edit")!!
+            binding.geosurfTitle.setText(geosurf.title)
+            binding.description.setText(geosurf.description)
+            binding.geosurfDate.text = geosurf.date
+            binding.datepicker.setText(R.string.update_date)
+
+            binding.btnAdd.setText(R.string.save_geosurf)
+            Picasso.get()
+                .load(geosurf.image)
+                .into(binding.geosurfImage)
+            if (geosurf.image != Uri.EMPTY) {
+                binding.chooseImage.setText(R.string.change_geosurf_image)
+            }
+        }
+
+        // Datepicker Click Listener
+        binding.datepicker.setOnClickListener {
+            val dpd = DatePickerDialog(
+                this, { _, mYear, mMonth, mDay ->
+                    val mMonth = mMonth + 1
+                    binding.geosurfDate.text = "$mDay/$mMonth/$mYear"
+                },
+                year,
+                month,
+                day
+            )
+            //show dialog
+            dpd.show()
+        }
 
         binding.chooseImage.setOnClickListener {
             showImagePicker(imageIntentLauncher)
+        }
+
+        //ability level spinner
+        val geosurfAbilityLevel = findViewById<Spinner>(R.id.geosurfAbilityLevel)
+        if (geosurfAbilityLevel != null) {
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item, abilityLevels
+            )
+            geosurfAbilityLevel.adapter = adapter
+
+            binding.geosurfAbilityLevel.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View, position: Int, id: Long
+                ) {
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.selected_item) + " " +
+                                "" + abilityLevels[position], Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
+            }
+
         }
 
         binding.geosurfLocation.setOnClickListener {
@@ -92,10 +153,12 @@ class GeosurfActivity : AppCompatActivity() {
                 .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
         }
-
         registerImagePickerCallback()
         registerMapCallback()
     }
+    //Oncreate function end
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_geosurf, menu)
@@ -143,15 +206,31 @@ class GeosurfActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Location ${result.data.toString()}")
-                            val location = result.data!!.extras?.getParcelable<Location>("location")!!
+                            val location =
+                                result.data!!.extras?.getParcelable<Location>("location")!!
                             i("Location == $location")
                             geosurf.lat = location.lat
                             geosurf.lng = location.lng
                             geosurf.zoom = location.zoom
                         } // end of if
                     }
-                    RESULT_CANCELED -> { } else -> { }
+                    RESULT_CANCELED -> {}
+                    else -> {}
                 }
             }
+
+    }
+    fun clickDataPicker(view: View) {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            // Display Selected date in Toast
+            Toast.makeText(this, """$dayOfMonth - ${monthOfYear + 1} - $year""", Toast.LENGTH_LONG).show()
+
+        }, year, month, day)
+        dpd.show()
     }
 }

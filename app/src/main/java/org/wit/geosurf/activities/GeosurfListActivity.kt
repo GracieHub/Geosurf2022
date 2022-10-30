@@ -15,6 +15,7 @@ import org.wit.geosurf.databinding.ActivityGeosurfListBinding
 import org.wit.geosurf.main.MainApp
 import org.wit.geosurf.models.GeosurfModel
 
+
 class GeosurfListActivity : AppCompatActivity(), GeosurfListener {
 
     lateinit var app: MainApp
